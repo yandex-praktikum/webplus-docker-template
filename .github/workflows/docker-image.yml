@@ -21,9 +21,9 @@ jobs:
       run: docker run --rm -i hadolint/hadolint < Dockerfile
       working-directory: ./post
     - name: Check layer counts
-      run: bash ./tests/test-layers-count.sh
+      run: bash ./tests/test-layers-count.sh 16
     - name: Check workdir
-      run: bash ./tests/test-layers-count.sh /my-awesome-app
+      run: bash ./tests/test-workdir.sh /my-awesome-app
     - name: Check used package manager cmd
       run: bash ./tests/test-npm-ci.sh post/Dockerfile
     - name: Check container CMD

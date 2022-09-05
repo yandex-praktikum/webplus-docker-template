@@ -4,7 +4,8 @@
 DOCKERFILE_PATH=$1
 if grep -q "npm ci" $DOCKERFILE_PATH; then
     echo "Для установки используется npm ci"
-    exit 1
+    exit 0
 else
     echo "Не найдена команда npm ci в Dockerfile"
+    exit 1
 fi 
