@@ -17,3 +17,19 @@ jobs:
     - name: Build the Docker image
       run: docker build . -t my-app
       working-directory: ./post
+    - name: Lint Dockerfile (by hadolint)
+      run: docker run --rm -i hadolint/hadolint < Dockerfile
+    - name: Check layer counts
+      run: bash ./tests/test-layers-count.sh
+    - name: Check workdir
+      run: bash ./tests/test-layers-count.sh /my-awesome-app
+    - name: Check used package manager cmd
+      run: bash ./tests/test-npm-ci.sh post/Dockerfile
+    - name: Check container CMD
+      run: bash ./tests/test-cmd.sh "[pm2-runtime start ecosystem.config.js]"
+    - name: Check used package manager cmd
+      run: bash ./tests/test-npm-ci.sh post/Dockerfile
+    - name: Run docker container
+      run: docker run -d my-app
+    - name: Check server response
+      run: bash ./tests/test-http.sh 'Тест пройден!'

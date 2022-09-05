@@ -1,8 +1,8 @@
 #!/bin/bash
 LAYER_COUNT_LIMIT=$1
-IMAGE_LAYERS_COUNT=`docker image inspect my-app -f '{{.RootFS.Layers}}' | wc -w`
+IMAGE_LAYERS_COUNT=`docker image inspect --format='{{.RootFS.Layers}}' my-app | wc -w`
 
-if [ "$IMAGE_LAYERS_COUNT" -le "$LAYER_COUNT_LIMIT" ]
+if [[ $IMAGE_LAYERS_COUNT -le $LAYER_COUNT_LIMIT ]]
 then
     echo "Отличная работа. Количество слоев $IMAGE_LAYERS_COUNT при допустимых $LAYER_COUNT_LIMIT"
     exit 1
