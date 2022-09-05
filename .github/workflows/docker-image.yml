@@ -19,6 +19,7 @@ jobs:
       working-directory: ./post
     - name: Lint Dockerfile (by hadolint)
       run: docker run --rm -i hadolint/hadolint < Dockerfile
+      working-directory: ./post
     - name: Check layer counts
       run: bash ./tests/test-layers-count.sh
     - name: Check workdir
