@@ -31,7 +31,7 @@ jobs:
     - name: Check used package manager cmd
       run: bash ./tests/test-npm-ci.sh post/Dockerfile
     - name: Run docker container
-      run: docker run -d my-app
+      run: docker run --name=my-app -p3010:3010 -d my-app
     - name: Wait server to start
       run: bash ./tests/wait-for-it.sh localhost:3010
     - name: Check server response
