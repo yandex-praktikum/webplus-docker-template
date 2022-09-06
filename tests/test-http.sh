@@ -1,4 +1,5 @@
 #!/bin/bash
+curl -si http://localhost:3010/ || true
 EXPECTED_RESPONSE=$1
 ACTUAL_RESPONSE=`curl -s http://localhost:3010/`
 
