@@ -1,4 +1,5 @@
 #!/bin/bash
+sleep 10
 echo "Ответ сервера"
 curl -si http://localhost:3010/ || true
 
